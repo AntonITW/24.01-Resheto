@@ -1,0 +1,50 @@
+#include <ctime>
+#include <cmath>
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int e = 0;
+    printf("%d\n", true);
+    printf("Введите конечное число и размер массива: ");
+    scanf("%d", &e);
+    int mass [e]; bool check [e];
+    for (int i = 0; i<e; i++) {
+        mass[i] = i+1;
+    }
+    for (int i = 0; i < e; i++) {
+            printf("%d ", mass[i]); 
+        }
+    printf("\n");
+    check [0] = check [1] = false;
+    for (int i = 2; i<=e; i++) {
+        check[i] = true;
+    }
+    for (int i = 2; i * i <= e; i++) {
+        if (check[i]) {
+            for (int j = i*i; j <= e; j += i) {
+                check[j] = 0;
+            }
+        }
+        for (int i = 1; i <= e; i++) {
+            if (i >= 10)
+                printf(" %d ", check[i]); 
+            else
+                printf("%d ", check[i]); 
+        }
+        printf("\n");
+    }
+    for (int i = 1; i <= e; i++) {
+            printf("%d ", check[i]); 
+        }
+    printf("\nПростые числа: \n");
+    for (int i = 1; i <= e; i++) {
+        if (check[i]) { 
+            printf("%d ", i); 
+        }
+    }
+}
+
